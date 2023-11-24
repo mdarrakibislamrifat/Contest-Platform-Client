@@ -107,7 +107,7 @@ const Navbar = () => {
           </ul>
         </div>
         <img
-          className="hidden sm:block lg:w-16 visible rounded-full"
+          className="hidden sm:block md:w-16 visible rounded-full lg:w-16 visible rounded-full"
           src="https://i.ibb.co/0CtKFMx/channels4-profile.jpg"
           alt=""
         />

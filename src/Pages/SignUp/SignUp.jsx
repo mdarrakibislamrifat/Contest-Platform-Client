@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, updateProfile } from "firebase/auth";
-import toast, { Toaster } from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Lottie from "lottie-react";
 import animationNew from "../../assets/Animation - 1700488396904.json";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
+import axios from "axios";
+import UseAxiosPublic from "../../Hooks/useAxiosPublic";
 const SignUp = () => {
   const { createUser, googleSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -15,6 +16,7 @@ const SignUp = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
+  const axiosPublic=UseAxiosPublic()
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -38,28 +40,26 @@ const SignUp = () => {
           updateProfile(result.user, {
             displayName: `${name}`,
             photoURL: `${photo}`,
-          });
-          
-          //   axios
-          //     .post(
-          //       "https://restaurant-management-server-orcin.vercel.app/jwt",
-          //       result.user,
-          //       { withCredentials: true }
-          //     )
-          // .then((res) => {
-          //   if (res) {
-          //     // localStorage.setItem("token", res.data.token);
-          //     // toast.success("Successfully Register!");
+          })
+          .then(()=>{
+            const userInfo={
+              name: name,
+              email:email
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(result=>{
+              if (result.data.insertedId) {
+                Swal.fire({
+                    title: "Successfully Register!",
+                    icon: "success"
+                  });
+                navigate("/login");
+              }
 
-          //   }
-          // });
-          if (result.user) {
-            Swal.fire({
-                title: "Successfully Register!",
-                icon: "success"
-              });
-            navigate("/login");
-          }
+            })
+            
+          })
+          
         })
         .catch((error) => {
           setError(error.message);
@@ -71,29 +71,27 @@ const SignUp = () => {
     googleSignIn(provider)
       .then((result) => {
         const user = { email: result.user.email };
-        
-        if (result.user) {
-            Swal.fire({
-                title: "Successfully Login!",
-                icon: "success"
-              });
-              navigate(location?.state ? location.state : "/")
-          }
-        //   axios.post('https://restaurant-management-server-orcin.vercel.app/jwt',user,{withCredentials:true})
-        //   .then(res=>{
-
-        //     if(res.data.success){
-        //     //   localStorage.setItem('token',res.data.token)
-        //       navigate(location?.state ? location.state : "/");
-        //     }
-        //   })
+        const userInfo={
+          email:result.user?.email,
+          name:result.user?.displayName
+        }
+        axiosPublic.post('/users',userInfo)
+      .then(res=>{
+        if (res.data.insertedId) {
+          Swal.fire({
+              title: "Successfully Login!",
+              icon: "success"
+            });
+            navigate(location?.state ? location.state : "/")
+        }
+      })
       })
       .catch((error) => {
         setError(error.message);
       });
   };
 
-  <Toaster position="top-center" reverseOrder={false} />;
+  
 
   return (
     <div className="hero min-h-screen py-10">

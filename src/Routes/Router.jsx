@@ -9,6 +9,7 @@ import Home from '../Pages/Home/Home';
 import SignIn from '../Pages/SignIn/SignIn';
 import SignUp from '../Pages/SignUp/SignUp';
 import Dashboard from '../DashBoard/Dashboard';
+import AllUsers from '../DashBoard/AllUsers/AllUsers';
 
   const router = createBrowserRouter([
     {
@@ -23,18 +24,26 @@ import Dashboard from '../DashBoard/Dashboard';
         }
       ]
     },
+
     {
       path:'dashboard',
-      element:<Dashboard></Dashboard>
+      element:<Dashboard></Dashboard>,
+      children:[
+        {
+          path:'allusers',
+          element:<AllUsers></AllUsers>
+        }
+      ]
     },
     {
-        path:'/login',
-        element:<SignIn></SignIn>
-    },
-    {
-        path:'/signup',
-        element:<SignUp></SignUp>
-    }
+      path:'/login',
+      element:<SignIn></SignIn>
+  },
+  {
+      path:'/signup',
+      element:<SignUp></SignUp>
+  }
+    
     
   ]);
 

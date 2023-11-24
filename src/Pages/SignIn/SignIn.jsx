@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../Providers/AuthProviders";
 import animationNew from '../../assets/Animation - 1700488396904.json'
 import Lottie from "lottie-react";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 
 const SignIn = () => {
@@ -19,7 +20,6 @@ const SignIn = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const toastId=toast.loading('Logging in..')
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -29,7 +29,15 @@ const SignIn = () => {
         const loggeduser=result.user;
         const user={email};
         e.target.reset();
-        toast.success('Logged in...',{id:toastId});
+        // toast.success('Logged in...',{id:toastId});
+        navigate('/')
+        if (result.user) {
+          Swal.fire({
+              title: "Successfully Login!",
+              icon: "success"
+            });
+            navigate(location?.state ? location.state : "/")
+        }
         
         
         // get access token
@@ -55,7 +63,7 @@ const SignIn = () => {
     googleSignIn(provider)
     .then((result) => {
       const user={email:result.user.email}
-      console.log(user);
+      
     //   axios.post('https://restaurant-management-server-orcin.vercel.app/jwt',user,{withCredentials:true})
     //   .then(res=>{
         
@@ -64,17 +72,20 @@ const SignIn = () => {
     //       navigate(location?.state ? location.state : "/");
     //     }
     //   })
-
+    if (result.user) {
+      Swal.fire({
+          title: "Successfully Login!",
+          icon: "success"
+        });
+        navigate(location?.state ? location.state : "/")
+    }
 
     })
     .catch((error) => {
       setError(error.message);
     });
   };
-  <Toaster
-  position="top-center"
-  reverseOrder={false}
-/>
+ 
   return (
 
     <div className="hero min-h-screen py-10">
@@ -83,7 +94,7 @@ const SignIn = () => {
         </Helmet>
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Login now!</h1>
+      <h1 className="text-5xl font-bold text-blue-500">Login now!</h1>
       <p className="py-6">
         <Lottie animationData={animationNew}></Lottie>
         </p>
@@ -118,8 +129,8 @@ const SignIn = () => {
             <p className="mt-4 block text-center font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
               Are you new here? Please
               <span className="ml-2"><Link
-                className="font-semibold text-amber-500 transition-colors hover:text-blue-700"
-                to="/singup"
+                className="font-semibold text-blue-500 transition-colors hover:text-blue-700"
+                to="/signup"
               >
                 SignUp
               </Link></span>

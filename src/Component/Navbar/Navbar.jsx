@@ -23,7 +23,7 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-blue-500 underline font-bold"
+              ? "text-black-500 underline font-bold"
               : ""
           }
         >
@@ -32,16 +32,16 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/allfood"
+          to="/allcontest"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
               : isActive
-              ? "text-amber-500 underline font-bold"
+              ? "text-black-500 underline font-bold"
               : ""
           }
         >
-          All Food items
+          All Contest
         </NavLink>
       </li>
       <li>
@@ -51,7 +51,7 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-amber-500  underline font-bold"
+              ? "text-black-500  underline font-bold"
               : ""
           }
         >
@@ -60,7 +60,7 @@ const Navbar = () => {
       </li>
       <li>
         {user ? (
-          <button onClick={handleLogOut}>Logout</button>
+          ''
         ) : (
           <NavLink
             to="/login"
@@ -68,7 +68,7 @@ const Navbar = () => {
               isPending
                 ? "pending"
                 : isActive
-                ? "text-amber-500 underline font-bold"
+                ? "text-black-500 underline font-bold"
                 : ""
             }
           >
@@ -80,7 +80,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-blue-200 shadow-lg rounded-lg mt-2">
+    <div className="navbar bg-blue-200 shadow-lg rounded-lg ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -107,16 +107,18 @@ const Navbar = () => {
           </ul>
         </div>
         <img
-          className="w-16 rounded-full"
+          className="hidden sm:block lg:w-16 visible rounded-full"
           src="https://i.ibb.co/0CtKFMx/channels4-profile.jpg"
           alt=""
         />
-        <Link className="btn btn-ghost normal-case text-blue-500 text-xl">ContestCrazeHub</Link>
+        <Link to='/' className="btn btn-ghost normal-case text-black text-sm lg:text-xl">ContestCrazeHub</Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
+      <p className="text-black-500">{user?.displayName}</p>
       {user && <div className="dropdown dropdown-bottom dropdown-end ml-24 md:ml-0 lg:ml-0">
+        
         <label tabIndex={0} >
         <img
                 className="rounded-full w-[50px] h-[50px] mr-2"
@@ -128,16 +130,14 @@ const Navbar = () => {
           tabIndex={0}
           className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52"
         >
-          <li className="text-green-500">{user?.displayName}</li>
+          
           <li>
-            <Link to='/addFood'>Add a food item</Link>
+            <Link to='/dashboard'>Dashboard</Link>
           </li>
           <li>
-            <Link to='/addedFoodItem'>My Added Food Items</Link>
+          <button className="text-blue-500" onClick={handleLogOut}>Logout</button>
           </li>
-          <li>
-            <Link to='/orderedFoodItem'>My Ordered Food Items</Link>
-          </li>
+          
         </ul>
       </div>}
      

@@ -73,6 +73,23 @@ const handleMakeCreator=user=>{
 }
 
 
+const handleMakeClient=user=>{
+  axiosSecure.patch(`/users/client/${user._id}`)
+    .then(res=>{
+        console.log(res.data)
+        if(res.data.modifiedCount>0){
+            refetch();
+            Swal.fire({
+                title: `${user.name} is an user Now!`,
+                
+                icon: "success"
+              });
+        }
+    })
+
+}
+
+
 
 
 
@@ -91,8 +108,8 @@ const handleMakeCreator=user=>{
                   <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Make admin</th>
                   <th>Role</th>
+                  
                   <th>Action</th>
                 </tr>
               </thead>
@@ -104,22 +121,26 @@ const handleMakeCreator=user=>{
                     <td>{user.email}</td>
                     <td>
 
-                      {user.role==='admin' ? 'Admin' : <button onClick={()=>handleMakeAdmin(user)}
+                      {user.role==='admin' ? <button onClick={()=>handleMakeCreator(user)}
                         
                         className="btn btn-sm bg-indigo-500"
                       >
-                        <FaUser className="text-white"></FaUser>
-                      </button>}
+                        <FaUser className="text-white"></FaUser> Admin
+                      </button> : user.role==='creator'? <button onClick={()=>handleMakeClient(user)}
+                        
+                        className="btn btn-sm bg-indigo-500"
+                      >
+                        <FaUser className="text-white"></FaUser> Creator
+                      </button> : user.role==='client' ? <button onClick={()=>handleMakeAdmin(user)}
+                        
+                        className="btn btn-sm bg-indigo-500"
+                      >
+                        <FaUser className="text-white"></FaUser> client
+                      </button>: ''}
                       
                     </td>
-                    <td>
-                    {user.role==='creator' ? 'Creator' :<button onClick={()=>handleMakeCreator(user)}
-                        
-                        className="btn btn-sm text-white bg-indigo-500"
-                      >
-                        Make creator
-                      </button>}
-                    </td>
+                    
+                    
                     <button onClick={() => handleDeleteUser(user)}
                       
                       className="btn btn-ghost btn-lg"

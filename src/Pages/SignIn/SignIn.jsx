@@ -52,14 +52,20 @@ const SignIn = () => {
         const userInfo = {
           email: result.user?.email,
           name: result.user?.displayName,
+          photo:result.user?.photoURL
+          
         };
         axiosPublic.post('/users', userInfo)
         .then((res) => {
-          if (res.data.insertedId) {
+          if (res.data?.insertedId) {
             Swal.fire({
               title: "Successfully Login!",
               icon: "success",
             });
+            navigate(location?.state ? location.state : "/");
+          }
+          else{
+            console.log('Error')
             navigate(location?.state ? location.state : "/");
           }
         });

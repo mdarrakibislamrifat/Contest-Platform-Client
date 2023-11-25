@@ -116,7 +116,7 @@ const Navbar = () => {
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
-      <p className="text-black-500">{user?.displayName}</p>
+      
       {user && <div className="dropdown dropdown-bottom dropdown-end ml-24 md:ml-0 lg:ml-0">
         
         <label tabIndex={0} >
@@ -130,6 +130,7 @@ const Navbar = () => {
           tabIndex={0}
           className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52"
         >
+          <li><p className="text-black-500">{user?.displayName}</p></li>
           
           <li>
             <Link to='/dashboard'>Dashboard</Link>

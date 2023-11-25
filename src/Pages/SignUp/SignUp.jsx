@@ -50,12 +50,16 @@ const SignUp = () => {
             }
             axiosPublic.post('/users',userInfo)
             .then(result=>{
-              if (result.data.insertedId) {
+              if (result.data?.insertedId) {
                 Swal.fire({
                     title: "Successfully Register!",
                     icon: "success"
                   });
                 navigate("/login");
+              }
+              else{
+                console.log('error')
+                navigate(location?.state ? location.state : "/")
               }
 
             })
@@ -79,12 +83,16 @@ const SignUp = () => {
         }
         axiosPublic.post('/users',userInfo)
       .then(res=>{
-        if (res.data.insertedId) {
+        if (res.data?.insertedId) {
           Swal.fire({
               title: "Successfully Login!",
               icon: "success"
             });
             navigate(location?.state ? location.state : "/")
+        }
+        else{
+          console.log('error')
+          navigate(location?.state ? location.state : "/")
         }
       })
       })

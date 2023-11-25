@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     createBrowserRouter,
-    RouterProvider,
+    
   } from "react-router-dom";
 import Main from '../Layout/Main';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
@@ -11,7 +11,15 @@ import SignUp from '../Pages/SignUp/SignUp';
 import Dashboard from '../DashBoard/Dashboard';
 import AllUsers from '../DashBoard/AllUsers/AllUsers';
 import ManageContest from '../DashBoard/ManageContest/ManageContest';
-import AdminHome from '../DashBoard/AdminHome/AdminHome';
+import AddContest from '../DashBoard/AddContest/AddContest';
+import CreatorRoute from './CreatorRoute';
+import AdminRoute from './AdminRoute';
+import ParticipateContest from '../DashBoard/ParticipateContest/ParticipateContest';
+import WinningContest from '../DashBoard/WinningContest/WinningContest';
+import MyProfile from '../DashBoard/MyProfile/MyProfile';
+import CreatedContest from '../DashBoard/CreatedContest/CreatedContest';
+import ContestSubmit from '../DashBoard/ContestSubmit/ContestSubmit';
+
 
   const router = createBrowserRouter([
     {
@@ -31,17 +39,42 @@ import AdminHome from '../DashBoard/AdminHome/AdminHome';
       path:'dashboard',
       element:<Dashboard></Dashboard>,
       children:[
+        // admin routes
         {
           path:'allusers',
-          element:<AllUsers></AllUsers>
+          element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
         },
         {
           path:'managecontest',
           element:<ManageContest></ManageContest>
         },
+        // user routes
         {
-          path:'adminhome',
-          element:<AdminHome></AdminHome>
+          path:'participatecontest',
+          element:<ParticipateContest></ParticipateContest>
+        },
+        {
+          path:'winningcontest',
+          element:<WinningContest></WinningContest>
+        },
+        {
+          path:'myprofile',
+          element:<MyProfile></MyProfile>
+        },
+
+        // creator contest
+        
+        {
+          path:'addcontest',
+          element:<CreatorRoute><AddContest></AddContest></CreatorRoute>
+        },
+        {
+          path:'createdcontest',
+          element:<CreatorRoute><CreatedContest></CreatedContest></CreatorRoute>
+        },
+        {
+          path:'contestsubmit',
+          element:<CreatorRoute><ContestSubmit></ContestSubmit></CreatorRoute>
         }
       ]
     },

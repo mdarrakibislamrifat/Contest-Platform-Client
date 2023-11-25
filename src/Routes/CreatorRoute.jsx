@@ -1,22 +1,22 @@
 
 
 import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProviders";
-import useAdmin from "../Hooks/useAdmin";
 import { Navigate } from "react-router-dom";
+import useCreator from "../Hooks/useCreator";
+import { AuthContext } from "../Providers/AuthProviders";
 
 
-const AdminRoute = ({children}) => {
+const CreatorRoute = ({children}) => {
     const {user,loading}=useContext(AuthContext);
-    const [isAdmin,isAdminLoading]=useAdmin();
-    if(loading || isAdminLoading){
+    const [isCreator,isCreatorLoading]=useCreator();
+    if(loading || isCreatorLoading){
         return <span className="loading loading-ring loading-lg"></span>
     }
-    if(user && isAdmin){
+    if(user && isCreator){
         return children;
     }
     return <Navigate state={location.pathname} to='/login'></Navigate>
    
 };
 
-export default AdminRoute;
+export default CreatorRoute;

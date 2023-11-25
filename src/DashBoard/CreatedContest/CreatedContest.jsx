@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const CreatedContest = () => {
   const axiosSecure = useAxiosSecure();
@@ -46,6 +47,9 @@ const CreatedContest = () => {
     });
   };
 
+
+
+
   return (
     <div>
       <h2 className="text-3xl text-blue-500 text-center font-semibold">
@@ -64,7 +68,6 @@ const CreatedContest = () => {
                 <th>Price</th>
                 <th>Prize Money</th>
                 <th>Status</th>
-
                 <th>Update</th>
                 <th>Delete</th>
               </tr>
@@ -79,13 +82,13 @@ const CreatedContest = () => {
                   <td>$ {item.money}</td>
                   <td>pending</td>
                   <td>
-                    <button>
-                      <FaEdit></FaEdit>
-                    </button>
+                    <Link to={`/dashboard/update/${item._id}`}><button>
+                      <FaEdit className="text-green-500"></FaEdit>
+                    </button></Link>
                   </td>
                   <td>
                     <button onClick={()=>handleDeleteItem(item)}>
-                      <FaTrash></FaTrash>
+                      <FaTrash className="text-red-500"></FaTrash>
                     </button>
                   </td>
                 </tr>

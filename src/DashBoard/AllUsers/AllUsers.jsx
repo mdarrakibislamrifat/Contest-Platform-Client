@@ -135,7 +135,7 @@ const handleMakeClient=user=>{
                         
                         className="btn btn-sm bg-indigo-500"
                       >
-                        <FaUser className="text-white"></FaUser> client
+                        <FaUser className="text-white"></FaUser> Client
                       </button>: ''}
                       
                     </td>

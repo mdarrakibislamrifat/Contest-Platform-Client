@@ -10,6 +10,7 @@ import SignIn from '../Pages/SignIn/SignIn';
 import SignUp from '../Pages/SignUp/SignUp';
 import Dashboard from '../DashBoard/Dashboard';
 import AllUsers from '../DashBoard/AllUsers/AllUsers';
+import ManageContest from '../DashBoard/ManageContest/ManageContest';
 
   const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ import AllUsers from '../DashBoard/AllUsers/AllUsers';
         {
           path:'allusers',
           element:<AllUsers></AllUsers>
+        },
+        {
+          path:'managecontest',
+          element:<ManageContest></ManageContest>
         }
       ]
     },

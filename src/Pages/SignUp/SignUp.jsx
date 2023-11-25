@@ -25,6 +25,7 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
+    const role=form.role.value;
 
     setError("");
     SetRegisterError("");
@@ -35,7 +36,7 @@ const SignUp = () => {
         "Please provide more than 6 characters,one capital letter and a special character"
       );
     } else {
-      createUser(email, password, photo, name)
+      createUser(email, password, photo, name,role)
         .then((result) => {
           updateProfile(result.user, {
             displayName: `${name}`,
@@ -44,7 +45,8 @@ const SignUp = () => {
           .then(()=>{
             const userInfo={
               name: name,
-              email:email
+              email:email,
+              role:role
             }
             axiosPublic.post('/users',userInfo)
             .then(result=>{
@@ -131,6 +133,20 @@ const SignUp = () => {
                 required
               />
             </div>
+            <div className="form-control">
+          <label className="label">
+            <span className="label-text">Select a Role</span>
+          </label>
+          <select
+            name="role"
+  
+            className="select select-bordered w-full"
+            required
+          >
+            <option value="client">Client</option>
+            <option value="creator">Creator</option>
+          </select>
+        </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>

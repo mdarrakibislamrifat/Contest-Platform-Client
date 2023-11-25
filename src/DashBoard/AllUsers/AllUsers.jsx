@@ -56,6 +56,22 @@ const handleMakeAdmin=user=>{
     })
 }
 
+const handleMakeCreator=user=>{
+  axiosSecure.patch(`/users/creator/${user._id}`)
+    .then(res=>{
+        console.log(res.data)
+        if(res.data.modifiedCount>0){
+            refetch();
+            Swal.fire({
+                title: `${user.name} is an creator Now!`,
+                
+                icon: "success"
+              });
+        }
+    })
+
+}
+
 
 
 
@@ -75,6 +91,7 @@ const handleMakeAdmin=user=>{
                   <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Make admin</th>
                   <th>Role</th>
                   <th>Action</th>
                 </tr>
@@ -86,11 +103,21 @@ const handleMakeAdmin=user=>{
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>
+
                       {user.role==='admin' ? 'Admin' : <button onClick={()=>handleMakeAdmin(user)}
                         
                         className="btn btn-sm bg-indigo-500"
                       >
                         <FaUser className="text-white"></FaUser>
+                      </button>}
+                      
+                    </td>
+                    <td>
+                    {user.role==='creator' ? 'Creator' :<button onClick={()=>handleMakeCreator(user)}
+                        
+                        className="btn btn-sm text-white bg-indigo-500"
+                      >
+                        Client
                       </button>}
                     </td>
                     <button onClick={() => handleDeleteUser(user)}

@@ -13,9 +13,9 @@ const AuthProviders = ({children}) => {
     const [user,setUser]=useState();
     const axiosPublic=UseAxiosPublic()
 
-    const createUser=(email,password,photo,name)=>{
+    const createUser=(email,password,photo,name,role)=>{
         setLoading(true)
-        return createUserWithEmailAndPassword(auth, email, password, photo, name);
+        return createUserWithEmailAndPassword(auth, email, password, photo, name,role);
         
     }
 

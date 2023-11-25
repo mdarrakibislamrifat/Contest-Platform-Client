@@ -1,33 +1,42 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBook, FaHome, FaList, FaPaypal, FaRegBookmark, FaSearch, FaShoppingCart, FaUser, FaVoicemail } from 'react-icons/fa';
+import { FaBook, FaFileImport, FaHome, FaList, FaPaypal, FaRegBookmark, FaSearch, FaShoppingCart, FaStar, FaUser, FaVoicemail } from 'react-icons/fa';
+import { FaCartPlus, FaFileCircleCheck } from "react-icons/fa6";
+import { IoIosContact } from "react-icons/io";
 import useAdmin from "../Hooks/useAdmin";
+import useCreator from "../Hooks/useCreator";
+import { Helmet } from "react-helmet-async";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProviders";
 
 const Dashboard = () => {
+  const {user}=useContext(AuthContext);
     const [isAdmin]=useAdmin();
+    const [isCreator]=useCreator()
 
     return (
         <div className="max-w-7xl mx-auto flex">
-      <div className="w-64 min-h-screen text-white bg-gradient-to-r from-indigo-500 to-purple-500">
+          <Helmet><title>Dashboard</title></Helmet>
+      <div className=" min-h-screen shadow-lg rounded-lg text-white bg-gradient-to-r from-indigo-500 to-purple-500">
         <ul className="menu p-4">
           
             <>
               {isAdmin ? <>
                 <li>
-                <NavLink to="/dashboard/adminHome">
+                <NavLink to="/dashboard/adminhome">
                   {" "}
-                  <FaHome></FaHome> Admin Home
+                  <FaHome className="text-xl"></FaHome> Admin Home
                 </NavLink>
               </li>
               
               <li>
                 <NavLink to="/dashboard/allusers">
-                  <FaUser></FaUser>All Users
+                  <FaUser className="text-xl"></FaUser>Manage Users
                 </NavLink>
               </li>
 
               <li>
                 <NavLink to="/dashboard/managecontest">
-                <FaList></FaList>Manage Contest
+                <FaList className="text-xl"></FaList>Manage Contest
                 </NavLink>
               </li>
               
@@ -37,73 +46,35 @@ const Dashboard = () => {
               
               : ''} 
 
-              <li>
-                <NavLink to="/dashboard/addItems">
-                  {" "}
-                  <FaBook></FaBook> Add Items
-                </NavLink>
-              </li>
+              <>{isCreator ? <>
+              
+              <li><NavLink to='/dashboard/addcontest'><FaFileImport className="text-xl"></FaFileImport> Add Contest</NavLink></li>
+              <li><NavLink to='/dashboard/createdcontest'><FaList className="text-xl"></FaList> My Created Contest</NavLink></li>
+              <li><NavLink to='/dashboard/contestsubmit'><FaFileCircleCheck className="text-xl"></FaFileCircleCheck> Contest Submit</NavLink></li>
+              
+              </>: ''}</>
 
-              <li>
-                <NavLink to="/dashboard/manageItems">
-                  {" "}
-                  <FaList></FaList>Manage Items
-                </NavLink>
-              </li>
+                <>{user ? <>
+                  <li><NavLink to='/dashboard/participatecontest'><FaCartPlus className="text-xl"></FaCartPlus> My Participated Contest</NavLink></li>
+                  <li><NavLink to='/dashboard/winningcontest'><FaStar className="text-xl"></FaStar> My Winning Contest</NavLink></li>
+                  <li><NavLink to='/dashboard/myprofile'><IoIosContact className="text-xl"></IoIosContact> My Profile</NavLink></li>
 
+                </> : ''}</>
               
 
               
             </>
-        
-            <>
-              <li>
-                <NavLink to="/dashboard/userHome">
-                  {" "}
-                  <FaHome></FaHome> User Home
-                </NavLink>
-              </li>
-
-              
-
-              
-
-              <li>
-                <NavLink to="/dashboard/cart">
-                  {" "}
-                  <FaShoppingCart></FaShoppingCart>MyCart ; 
-                </NavLink>
-              </li>
-
-              
-
-              <li>
-              <NavLink to="/dashboard/paymentHistory">
-                  <FaPaypal></FaPaypal> Real Payments History
-                </NavLink>
-              </li>
-              <li>
-            <NavLink to="/dashboard/contact">
-              <FaVoicemail></FaVoicemail> Contact
-            </NavLink>
-          </li>
-            </>
-          
+      
           <div className="divider"></div>
 
           <li>
             <NavLink to="/">
               {" "}
-              <FaHome></FaHome>Home
+              <FaHome className="text-xl"></FaHome>Home
             </NavLink>
           </li>
 
-          <li>
-            <NavLink to="/ourShop/salad">
-              {" "}
-              <FaSearch></FaSearch>Category
-            </NavLink>
-          </li>
+          
 
           
         </ul>

@@ -11,6 +11,7 @@ import SignUp from '../Pages/SignUp/SignUp';
 import Dashboard from '../DashBoard/Dashboard';
 import AllUsers from '../DashBoard/AllUsers/AllUsers';
 import ManageContest from '../DashBoard/ManageContest/ManageContest';
+import AdminHome from '../DashBoard/AdminHome/AdminHome';
 
   const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ import ManageContest from '../DashBoard/ManageContest/ManageContest';
         {
           path:'managecontest',
           element:<ManageContest></ManageContest>
+        },
+        {
+          path:'adminhome',
+          element:<AdminHome></AdminHome>
         }
       ]
     },

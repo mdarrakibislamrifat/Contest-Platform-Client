@@ -117,7 +117,7 @@ const handleMakeCreator=user=>{
                         
                         className="btn btn-sm text-white bg-indigo-500"
                       >
-                        Client
+                        Make creator
                       </button>}
                     </td>
                     <button onClick={() => handleDeleteUser(user)}

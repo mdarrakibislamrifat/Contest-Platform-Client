@@ -123,17 +123,17 @@ const handleMakeClient=user=>{
 
                       {user.role==='admin' ? <button onClick={()=>handleMakeCreator(user)}
                         
-                        className="btn btn-sm bg-indigo-500"
+                        className="btn btn-sm text-white bg-indigo-500"
                       >
                         <FaUser className="text-white"></FaUser> Admin
                       </button> : user.role==='creator'? <button onClick={()=>handleMakeClient(user)}
                         
-                        className="btn btn-sm bg-indigo-500"
+                        className="btn btn-sm text-white bg-indigo-500"
                       >
                         <FaUser className="text-white"></FaUser> Creator
                       </button> : user.role==='client' ? <button onClick={()=>handleMakeAdmin(user)}
                         
-                        className="btn btn-sm bg-indigo-500"
+                        className="btn btn-sm text-white bg-indigo-500"
                       >
                         <FaUser className="text-white"></FaUser> Client
                       </button>: ''}

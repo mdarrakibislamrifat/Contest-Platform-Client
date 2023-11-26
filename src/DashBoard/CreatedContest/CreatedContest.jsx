@@ -80,16 +80,16 @@ const CreatedContest = () => {
                   <td>{item.type}</td>
                   <td>$ {item.price}</td>
                   <td>$ {item.money}</td>
-                  <td>pending</td>
+                  <td>{item.status ==='confirmed' ? <p className="text-green-500 font-medium">Accepted</p> : 'Pending'}</td>
                   <td>
-                    <Link to={`/dashboard/update/${item._id}`}><button>
-                      <FaEdit className="text-green-500"></FaEdit>
-                    </button></Link>
+                    {item.status==='confirmed' ? <p>Can't Update</p> :<Link to={`/dashboard/update/${item._id}`}><button>
+                      <FaEdit className="text-xl"></FaEdit>
+                    </button></Link>}
                   </td>
                   <td>
-                    <button onClick={()=>handleDeleteItem(item)}>
-                      <FaTrash className="text-red-500"></FaTrash>
-                    </button>
+                    {item.status==='confirmed' ? <p>Can't Delete</p> :<button onClick={()=>handleDeleteItem(item)}>
+                      <FaTrash className="text-red-500 text-xl"></FaTrash>
+                    </button>}
                   </td>
                 </tr>
               ))}

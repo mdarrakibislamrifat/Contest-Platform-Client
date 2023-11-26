@@ -37,7 +37,7 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-black-500 underline font-bold"
+              ? "text-blue-500 underline font-bold"
               : ""
           }
         >
@@ -46,7 +46,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/blogs"
+          to="/"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"

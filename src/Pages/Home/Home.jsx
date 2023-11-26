@@ -1,14 +1,14 @@
 
-import Navbar from '../../Component/Navbar/Navbar';
+import { Helmet } from 'react-helmet-async';
 import Banner from '../../Component/Banner/Banner';
-import Footer from '../../Component/Footer/Footer';
+
 
 const Home = () => {
     return (
         <div>
-            <Navbar></Navbar>
+            <Helmet><title>Home</title></Helmet>
             <Banner></Banner>
-            <Footer></Footer>
+            
 
 
         </div>

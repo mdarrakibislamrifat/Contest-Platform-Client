@@ -20,6 +20,9 @@ import MyProfile from '../DashBoard/MyProfile/MyProfile';
 import CreatedContest from '../DashBoard/CreatedContest/CreatedContest';
 import ContestSubmit from '../DashBoard/ContestSubmit/ContestSubmit';
 import UpdateContest from '../DashBoard/UpdateContest/UpdateContest';
+import AllContest from '../DashBoard/AllContest/AllContest';
+import ContestDetails from '../DashBoard/AllContest/ContestDetails';
+import PrivateRoute from './PrivateRoute';
 
 
   const router = createBrowserRouter([
@@ -31,7 +34,15 @@ import UpdateContest from '../DashBoard/UpdateContest/UpdateContest';
         {
             path:'/',
             element:<Home></Home>
-
+        },
+        {
+          path:'/allcontest',
+          element:<AllContest></AllContest>
+        },
+        {
+          path:'/details/:id',
+          element:<PrivateRoute><ContestDetails></ContestDetails></PrivateRoute>,
+          loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
         }
       ]
     },
@@ -79,9 +90,10 @@ import UpdateContest from '../DashBoard/UpdateContest/UpdateContest';
         },
         {
           path:'update/:id',
-          element:<CreatorRoute><UpdateContest></UpdateContest></CreatorRoute>,
+          element:<UpdateContest></UpdateContest>,
           loader:({params})=>fetch(`http://localhost:5000/contests/new/${params.id}`)
-        }
+        },
+        
       ]
     },
     {

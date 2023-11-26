@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { FaAccessibleIcon, FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageContest = () => {
   const axiosSecure = useAxiosSecure();
@@ -65,6 +66,7 @@ const ManageContest = () => {
               <th>Type</th>
               <th>Price</th>
               <th>Delete</th>
+              <th>Update</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -95,6 +97,11 @@ const ManageContest = () => {
                     <FaTrash className="text-red-500 text-xl"></FaTrash>
                   </button>
                 </th>
+                <td>
+                    <Link to={`/dashboard/update/${item._id}`}><button>
+                      <FaEdit className="text-xl"></FaEdit>
+                    </button></Link>
+                  </td>
                 <th>
                   {item?.status ? <p className="text-green-500 ">Confirmed</p> :<button
                     onClick={() => handleMakeConfirmed(item)}

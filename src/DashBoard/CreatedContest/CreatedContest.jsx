@@ -70,6 +70,7 @@ const CreatedContest = () => {
                 <th>Status</th>
                 <th>Update</th>
                 <th>Delete</th>
+                <th>Go To</th>
               </tr>
             </thead>
             <tbody>
@@ -91,6 +92,7 @@ const CreatedContest = () => {
                       <FaTrash className="text-red-500 text-xl"></FaTrash>
                     </button>}
                   </td>
+                  <td><Link to='/dashboard/contestsubmit'><button className="btn btn-xs">Submission</button></Link></td>
                 </tr>
               ))}
             </tbody>

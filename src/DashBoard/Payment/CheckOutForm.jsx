@@ -75,6 +75,7 @@ const CheckOutForm = ({item,totalPrice}) => {
               email: user.email,
               name: user.displayName,
               contestName: item.name,
+              creatorEmail:item.email
             };
 
             const res = await axiosSecure.post('/registration', payment);
@@ -119,7 +120,7 @@ const CheckOutForm = ({item,totalPrice}) => {
       >
         Pay
       </button>
-      <p className="text-red-500">{error}</p>
+      
       {transactionId && <p className="text-green-500">Your transaction id: {transactionId}</p>}
     </form>
   );

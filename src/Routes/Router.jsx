@@ -80,8 +80,9 @@ import UpdateUser from '../DashBoard/MyProfile/UpdateUser';
           element:<UpdateUser></UpdateUser>
         },
         {
-          path:'payment',
-          element:<Payment></Payment>
+          path:'payment/:id',
+          element:<Payment></Payment>,
+          loader:({params})=>fetch(`http://localhost:5000/contests/payments/new/item/${params.id}`)
         },
 
         // creator contest

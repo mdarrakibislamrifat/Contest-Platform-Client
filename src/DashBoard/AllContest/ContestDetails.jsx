@@ -32,7 +32,7 @@ const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
         <p>{items.description}</p>
 
         <div className="card-actions justify-center">
-          <Link to='/dashboard/payment'><button className="btn btn-primary">Registration</button></Link>
+          <Link to={`/dashboard/payment/${items._id}`}><button className="btn btn-primary">Registration</button></Link>
         </div>
       </div>
     </div>

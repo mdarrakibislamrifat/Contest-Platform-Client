@@ -16,7 +16,7 @@ const SignUp = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
-  const axiosPublic=UseAxiosPublic()
+  const axiosPublic=UseAxiosPublic();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -46,6 +46,7 @@ const SignUp = () => {
             const userInfo={
               name: name,
               email:email,
+              photo:photo,
               role:role
             }
             axiosPublic.post('/users',userInfo)
@@ -79,7 +80,8 @@ const SignUp = () => {
         const user = { email: result.user.email };
         const userInfo={
           email:result.user?.email,
-          name:result.user?.displayName
+          name:result.user?.displayName,
+          photo:result.user?.photoURL
         }
         axiosPublic.post('/users',userInfo)
       .then(res=>{

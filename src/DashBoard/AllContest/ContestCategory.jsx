@@ -9,7 +9,7 @@ const ContestCategory = ({data}) => {
     return (
         
             <div
-          className="card  card-compact  bg-base-100 shadow-xl"
+          className="card h-96  card-compact  bg-base-100 shadow-xl"
         >
             <Helmet><title>All Contest</title></Helmet>
           <figure>

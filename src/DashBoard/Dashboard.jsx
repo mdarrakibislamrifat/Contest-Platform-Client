@@ -1,16 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import {
-  FaBook,
+ 
   FaFileImport,
   FaHome,
   FaList,
-  FaPaypal,
-  FaRegBookmark,
-  FaSearch,
-  FaShoppingCart,
   FaStar,
   FaUser,
-  FaVoicemail,
 } from "react-icons/fa";
 import { FaCartPlus, FaFileCircleCheck } from "react-icons/fa6";
 import { IoIosContact } from "react-icons/io";
@@ -26,11 +21,11 @@ const Dashboard = () => {
   const [isCreator] = useCreator();
 
   return (
-    <div className="max-w-7xl mx-auto flex">
+    <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
       <Helmet>
         <title>Dashboard</title>
       </Helmet>
-      <div className=" min-h-screen shadow-lg rounded-lg text-white bg-gradient-to-r from-indigo-500 to-purple-500">
+      <div className="lg:min-h-screen w-full lg:w-1/5 shadow-lg rounded-lg text-white  bg-gradient-to-r from-indigo-500 to-purple-500">
         <ul className="menu p-4">
           <>
             {isAdmin ? (

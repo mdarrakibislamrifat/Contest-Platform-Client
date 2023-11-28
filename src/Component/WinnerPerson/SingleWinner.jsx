@@ -12,7 +12,7 @@ const SingleWinner = ({item}) => {
             {name}
           </h4>
           <p className="block font-sans text-base antialiased font-medium leading-relaxed text-transparent bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text">
-            {contestName}
+           Contest Name: {contestName}
           </p>
         </div>
         <div className="flex justify-center p-6 pt-2 gap-7">

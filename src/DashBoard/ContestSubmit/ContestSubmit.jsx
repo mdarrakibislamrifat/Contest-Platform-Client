@@ -19,11 +19,11 @@ const ContestSubmit = () => {
         }
     })
 
-
+    const existingWinner=register.find(data=>data.winner)
 
     return (
         <div>
-           {register.map(item=><ShowSubmit key={item._id} item={item}></ShowSubmit>)}
+           {register.map(item=><ShowSubmit key={item._id} existingWinner={existingWinner} register={register} item={item}></ShowSubmit>)}
         </div>
     );
 };

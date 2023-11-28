@@ -78,7 +78,7 @@ const CheckOutForm = ({item,totalPrice}) => {
               creatorEmail:item.email,
               price:item.price,
               id:item._id,
-              image:user.displayName
+              image:user.photoURL
             
             };
 

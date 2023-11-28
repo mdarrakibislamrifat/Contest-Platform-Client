@@ -19,7 +19,7 @@ const ContestSubmit = () => {
         }
     })
 
-console.log(find)
+
 
     return (
         <div>

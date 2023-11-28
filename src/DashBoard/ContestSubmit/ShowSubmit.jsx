@@ -10,19 +10,26 @@ const ShowSubmit = ({item}) => {
    
     const axiosPublic=UseAxiosPublic()
     const handleMakeWinner=item=>{
-        
-        axiosPublic.patch(`/registration/v1/v2/${item._id}`)
-        .then(res=>{
-            console.log(res.data)
-            if(res.data.modifiedCount>0){
-                
-                Swal.fire({
-                    title: `${item.name} is an Winner `,
-                    
-                    icon: "success"
-                  });
-            }
-        })
+        if(item.winner === 'winner'){
+          Swal.fire({
+            title: 'Already have a winner',
+            
+            icon: "error"
+          });
+        }else{
+          axiosPublic.patch(`/registration/v1/v2/${item._id}`)
+          .then(res=>{
+              console.log(res.data)
+              if(res.data.modifiedCount>0){
+                  Swal.fire({
+                      title: `${item.name} is an Winner `,
+                      
+                      icon: "success"
+                    });
+              }
+          })
+        }
+       
     }
     
     return (

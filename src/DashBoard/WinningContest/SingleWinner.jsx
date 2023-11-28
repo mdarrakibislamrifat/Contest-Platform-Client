@@ -7,7 +7,7 @@ const SingleWinner = ({item}) => {
 
     return (
         <div>
-            {user?.email == item?.email ? <div className="stats shadow">
+            {user?.email == item?.email && item?.winner==='winner' ? <div className="stats shadow">
   
   <div className="stat place-items-center">
     <div className="stat-title">Payments</div>

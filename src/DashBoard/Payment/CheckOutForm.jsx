@@ -15,6 +15,8 @@ const CheckOutForm = ({item,totalPrice}) => {
  
   const { user } = useContext(AuthContext);
 
+  
+
   useEffect(() => {
     const fetchClientSecret = async () => {
       if (totalPrice > 0 && totalPrice <= 999999.99) {
@@ -26,6 +28,7 @@ const CheckOutForm = ({item,totalPrice}) => {
         }
       } else {
         setError('Total price exceeds the allowed limit');
+
       }
     };
 
@@ -91,6 +94,8 @@ const CheckOutForm = ({item,totalPrice}) => {
                 icon: "success"
               });
             }
+
+            
           }
         }
       }

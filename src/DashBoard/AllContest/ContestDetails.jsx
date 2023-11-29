@@ -26,7 +26,7 @@ const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
         <h2 className="text-2xl font-semibold">Contest Name: {items.name}</h2>
         <p>Participate: {items?.count}</p>
         <p>Prize Money: ${items.money}</p>
-        <p>Winner : {items.name}</p>
+        <p>Email : {items.email}</p>
         <p>{items.photo? items.photo : <div className="flex justify-center"><img className="w-20" src="https://i.ibb.co/DGkp466/blank-profile-picture-mystery-man-avatar-973460.png"></img></div>}</p>
         <p>Deadline : {hours}:{minutes}:{seconds} </p>
         <p>{items.description}</p>

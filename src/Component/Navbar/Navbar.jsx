@@ -32,6 +32,35 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          to="/timeline"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-blue-500 underline font-bold"
+              : ""
+          }
+        >
+          Timeline
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/piechart"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-blue-500 underline font-bold"
+              : ""
+          }
+        >
+          PieChart
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
           to="/allcontest"
           className={({ isActive, isPending }) =>
             isPending

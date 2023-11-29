@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
     createBrowserRouter,
     
@@ -25,6 +25,9 @@ import ContestDetails from '../DashBoard/AllContest/ContestDetails';
 import PrivateRoute from './PrivateRoute';
 import Payment from '../DashBoard/Payment/Payment';
 import UpdateUser from '../DashBoard/MyProfile/UpdateUser';
+import Timelline from "../Pages/Timeline/Timelline";
+import BigChart from "../Pages/Piechart/BigChart";
+
 
 
   const router = createBrowserRouter([
@@ -36,6 +39,14 @@ import UpdateUser from '../DashBoard/MyProfile/UpdateUser';
         {
             path:'/',
             element:<Home></Home>
+        },
+        {
+          path:'/timeline',
+          element:<Timelline></Timelline>
+        },
+        {
+          path:'/piechart',
+          element:<BigChart></BigChart>
         },
         {
           path:'/allcontest',

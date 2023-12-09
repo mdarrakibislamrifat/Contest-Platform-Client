@@ -1,8 +1,22 @@
-# React + Vite
+# Some Features of my project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+* On the home page there is a navbar at the top with a logo and website name on the left side and five route names on the right side.
+* Under the navbar show a banner and search field to search any kind of contest.
+* Then the popular contest here show the popular contest how much join.
+* Then Show winner person and aso show there have upcomming contest.
+* In all contest routes have 4 category that show different types of contest.
+* And here is a dashboard when a user login in then him/her on picture hover or click then show dashboard.
+* Here are 3 types persons dashboard these are admin,creator and normal client.
+* Admin can delete update and see all users and handle them to make creator client or admin if admin want.
+* creator post in side and  the client explore this feature .
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Technology That I am used---
+* Html5
+* css3
+* tailwindcss
+* javascript
+* express.js
+* mongodb
+* react.js
+* daisyui
+* VsCode
